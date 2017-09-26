@@ -1,1 +1,1 @@
-# rtc2017
+# Ethereum Workshop RTC 2017
