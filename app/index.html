@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+    <title>Rtc Coin</title>
+    <meta charset="utf-8">
+
+    <style>
+        body {
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            background-color: #c1272d;
+        }
+
+        .page {
+            width: 800px;
+            margin: 20px;
+            padding: 10px;
+            background-color: white;
+            border-radius: 25px;
+        }
+
+        .title {
+            font-size: 36px;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .panel {
+            background-color: #f1e1e3;
+            margin: 10px;
+            padding: 20px;
+            width: 90%;
+            border: 4px;
+            border-style: solid;
+            border-color: #c1272d;
+            border-radius: 12px;
+        }
+
+        .accountNumber {
+            font-size: 22px;
+        }
+
+        .accountNumberSpan {
+            font-size: 16px;
+        }
+
+        .balance {
+            font-size: 18px;
+        }
+
+        .sendTitle {
+            font-size: 22px;
+            padding: 0px;
+        }
+
+        .sendText {
+            font-size: 18px;
+            margin: 6px;
+        }
+
+        .sendButton {
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .logArea {
+            font-size: 11px;
+            width: 100%;
+        }
+
+
+    </style>
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+
+<div class="page">
+
+    <div class="title">RtcCoin</div>
+
+    <div class="panel">
+        <div class="accountNumber">Account: <span class="accountNumberSpan" id="accountNumber">0x0a4e3201f91dc3c7346d305cef7b664ad5d49322</span>
+        </div>
+        <div class="balance">Balance: <span id="balance">0</span></div>
+    </div>
+
+    <div class="panel">
+        <div class="sendTitle">Send RtcCoins</div>
+        <form id="sendForm">
+            <div class="sendText">Send <input id="sendAmount" placeholder="0"/></div>
+            <div class="sendText">to account <input id="destAccount" size="48"/></div>
+            <div class="sendButton">
+                <button class="sendButton" id="sendButton" type="button">Send</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="panel">
+        <textarea class="logArea" id="logArea" readonly rows="20"></textarea>
+    </div>
+
+</div>
+</body>
+</html>
