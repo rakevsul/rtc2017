@@ -15,5 +15,9 @@ contract RtcCoin {
 
 		balances[msg.sender] -= value;                    // Subtract from the sender
 		balances[to] += value;                            // Add to the recipient
+
+        LogTransfer(msg.sender, to, value);               // Send a log event
 	}
+
+    event LogTransfer(address indexed from, address indexed to, uint value);
 }
