@@ -24,6 +24,12 @@
             padding: 30px;
         }
 
+        .subtitle {
+            font-size: 14px;
+            text-align: center;
+            padding: 3px;
+        }
+
         .panel {
             background-color: #f1e1e3;
             margin: 10px;
@@ -76,10 +82,10 @@
 
 <div class="page">
 
-    <div class="title">RtcCoin</div>
+    <div class="title">RtcCoin<div class="subtitle">(contract address: <span id="contractAddress"></span>)</div></div>
 
     <div class="panel">
-        <div class="accountNumber">Account: <span class="accountNumberSpan" id="accountNumber">0x0a4e3201f91dc3c7346d305cef7b664ad5d49322</span>
+        <div class="accountNumber">Account: <span class="accountNumberSpan" id="accountNumber"></span>
         </div>
         <div class="balance">Balance: <span id="balance">0</span></div>
     </div>

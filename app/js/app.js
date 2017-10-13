@@ -22,14 +22,17 @@ const RtcCoin = truffleContract(rtccoinJson);
 RtcCoin.setProvider(web3.currentProvider);
 
 async function setContract(localDeployed) {
+    let contractAddress;
     if (localDeployed) {
         const instance = await RtcCoin.deployed();
-        console.log(`Using locally deployed RtcCoin contract address = ${instance.contract.address}`);
-        window.rtcCoin = RtcCoin.at(instance.contract.address);
+        contractAddress = instance.contract.address;
+        console.log(`Using locally deployed RtcCoin contract address = ${contractAddress}`);
     } else {
-        console.log(`Using provided RtcCoin contract address = ${RTCNET_CONTRACT_ADDRESS}`);
-        window.rtcCoin = RtcCoin.at(RTCNET_CONTRACT_ADDRESS);
+        contractAddress = RTCNET_CONTRACT_ADDRESS;
+        console.log(`Using provided RtcCoin contract address = ${contractAddress}`);
     }
+    window.rtcCoin = RtcCoin.at(contractAddress);
+    document.getElementById('contractAddress').innerHTML = contractAddress;
 }
 
 window.addEventListener('load', async () => {
