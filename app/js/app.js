@@ -41,7 +41,8 @@ window.addEventListener('load', async () => {
 
     const accounts = await getAccountsPromise();
     if (accounts.length === 0) {
-        throw new Error('No account with which to transact');
+        writeLog('ERROR: No account found!');
+        throw new Error('No account found!');
     }
     window.activeAccount = accounts[0];
     showAccount(window.activeAccount);
@@ -53,18 +54,20 @@ window.addEventListener('load', async () => {
     const logTransferEvent = window.rtcCoin.LogTransfer();
     logTransferEvent.watch((error, result) => {
         if (error) {
-            console.error(error);
+            writeLog(`ERROR: ${error}`);
         } else {
-            const log = `${result.args.from} => ${result.args.to} : ${result.args.value}`;
-            console.log(log);
-
-            document.getElementById('logArea').innerHTML += '\n' + log;
+            writeLog(`${result.args.from} => ${result.args.to} : ${result.args.value}`);
             if (result.args.from === window.activeAccount || result.args.to === window.activeAccount) {
                 showBalance();
             }
         }
     });
 });
+
+function writeLog(message) {
+    console.log(message);
+    document.getElementById('logArea').innerHTML += '\n' + message;
+}
 
 async function showAccount(accountNumber) {
     document.getElementById('accountNumber').innerHTML = accountNumber;
@@ -90,9 +93,14 @@ async function sendFormSubmit() {
 }
 
 async function sendCoin(destAccount, amount) {
-    window.rtcCoin.transfer.sendTransaction(destAccount, amount, {
-        from: window.activeAccount
-    });
+    try {
+        await window.rtcCoin.transfer.sendTransaction(destAccount, amount, {
+            from: window.activeAccount
+        });
+    } catch (error) {
+        writeLog(`ERROR: ${error}`);
+        throw error;
+    }
 }
 
 
