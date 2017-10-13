@@ -5,6 +5,9 @@ const promisify = require('es6-promisify');
 const truffleContract = require('truffle-contract');
 const rtccoinJson = require('../../build/contracts/RtcCoin.json');
 
+const USE_LOCAL_DEPLOYED = true;
+const RTCNET_CONTRACT_ADDRESS = '0xa867a46c883331318a5801d9d24a29587420072e';
+
 require('file-loader?name=../index.html!../index.html');
 
 if (typeof web3 !== 'undefined') {
@@ -18,6 +21,17 @@ const getAccountsPromise = promisify(web3.eth.getAccounts);
 const RtcCoin = truffleContract(rtccoinJson);
 RtcCoin.setProvider(web3.currentProvider);
 
+async function setContract(localDeployed) {
+    if (localDeployed) {
+        const instance = await RtcCoin.deployed();
+        console.log(`Using locally deployed RtcCoin contract address = ${instance.contract.address}`);
+        window.rtcCoin = RtcCoin.at(instance.contract.address);
+    } else {
+        console.log(`Using provided RtcCoin contract address = ${RTCNET_CONTRACT_ADDRESS}`);
+        window.rtcCoin = RtcCoin.at(RTCNET_CONTRACT_ADDRESS);
+    }
+}
+
 window.addEventListener('load', async () => {
 
     document.getElementById("sendButton").addEventListener('click', sendFormSubmit);
@@ -29,8 +43,8 @@ window.addEventListener('load', async () => {
     window.activeAccount = accounts[0];
     showAccount(window.activeAccount);
 
-    const instance = await RtcCoin.deployed();
-    window.rtcCoin = RtcCoin.at(instance.contract.address);
+    await setContract(USE_LOCAL_DEPLOYED);
+
     showBalance();
 
     const logTransferEvent = window.rtcCoin.LogTransfer();
