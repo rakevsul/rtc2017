@@ -10,3 +10,17 @@
 ### 2. Start the UI
  - Run `./node_modules/.bin/webpack`
  - In a browser open `./build/app/index.html`
+ 
+ 
+## Connect to the rtcnet private ethereum blockchain
+ - Stop testrpc if it's running
+ - `cd rtcnet`
+ - Initialize the blockchain and create an account: `./rtcnet_init.sh`
+ - Start mining the blockchain: `./rtcnet_miner.sh`
+ - TODO Wait to connect...
+ - TODO Publish address to receive RtcCoins
+ 
+### To send coins, you have to unlock your account
+ - In a new window, open a geth console: `./rtcnet_console.sh`
+ - In the geth console, unlock your account: `personal.unlockAccount(eth.accounts[0])` password is `123456`
+ - Now send coins from the UI

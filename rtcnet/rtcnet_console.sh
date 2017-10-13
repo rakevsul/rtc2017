@@ -6,7 +6,7 @@ GETH=~/"Library/Application Support/Mist/binaries/Geth/unpacked/geth"
 "$GETH" --datadir ~/Library/Ethereum/rtcnet init ./rtc_genesis.json
 
 # Run geth
-"$GETH" --datadir ~/Library/Ethereum/rtcnet --networkid 7777 --rpc --rpcport 8545 --rpcaddr 0.0.0.0 --rpccorsdomain "*" --rpcapi "eth,net,web3" --ipcpath ~/Library/Ethereum/geth.ipc console
+"$GETH" --datadir ~/Library/Ethereum/rtcnet --networkid 7777 --rpc --rpcport 8545 --rpcaddr 0.0.0.0 --rpccorsdomain "*" --rpcapi "eth,net,web3" --ipcpath ~/Library/Ethereum/geth.ipc attach
 
-# Create an account in the console:
-# personal.newAccount()
+# Unlock an account with:
+# personal.unlockAccount(eth.accounts[0])
