@@ -22,5 +22,5 @@
  
 ### To send coins, you have to unlock your account
  - In a new window, open a geth console: `./rtcnet_console.sh`
- - In the geth console, unlock your account: `personal.unlockAccount(eth.accounts[0])` password is `123456`
+ - In the geth console, unlock your account: `personal.unlockAccount(eth.accounts[0], null, 3600)` password is `123456`
  - Now send coins from the UI

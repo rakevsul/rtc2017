@@ -6,7 +6,7 @@ const truffleContract = require('truffle-contract');
 const rtccoinJson = require('../../build/contracts/RtcCoin.json');
 
 const USE_LOCAL_DEPLOYED = true;
-const RTCNET_CONTRACT_ADDRESS = '0xa867a46c883331318a5801d9d24a29587420072e';
+const RTCNET_CONTRACT_ADDRESS = '0x11d8c0c697f713fc5d927843cb6f71b978f786c9';
 
 require('file-loader?name=../index.html!../index.html');
 
