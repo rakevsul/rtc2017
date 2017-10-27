@@ -17,8 +17,8 @@
  - `cd rtcnet`
  - Initialize the blockchain and create an account: `./rtcnet_init.sh`
  - Start mining the blockchain: `./rtcnet_miner.sh`
- - TODO Wait to connect...
- - TODO Publish address to receive RtcCoins
+ - Wait to connect...
+ - Publish your address to receive RtcCoins: https://docs.google.com/spreadsheets/d/1oF9Y6GmGtKlvHNjVvqH0U9SjJUll56NNekEruqqtdEA/edit?usp=sharing
  
 ### To send coins, you have to unlock your account
  - In a new window, open a geth console: `./rtcnet_console.sh`
